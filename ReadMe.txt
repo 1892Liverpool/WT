@@ -1,3 +1,55 @@
+##Spirala 2
+
+1. Šta je uradeno?
+
+-Sva polja u formi imaju JavaScript validaciju. Na podstranici "team" uradena je validacija 
+ pri pretrazi igraca. Ukoliko se unese broj u imenu ili se ostavi prazno polje izbacit ce 
+ grešku. Na podstranici "shop" validacija nije potrebna jer je korišten "select". Ne može 
+ se ubaciti nepostojeci artikal.
+
+-Carousel je uraden na podstranici "home". Korišten je za pregled novih vijesti.
+
+-LocalStorage je uraden na svakoj formi(na podstranici "team" i "shop").
+
+-Ajax je uraden, ali u posebnom je dokumentu "sa Ajaxom". Kada sam dodao ajax forme i 
+ button-i nisu radili, nisam stigao da implementiram da sve to radi zajedno.
+
+2. Šta nije uradeno?
+
+-Primjer Carousel-a ima samo na jednoj podstranici "home". Treba i na još dvije podstranice
+ ("team" i "home") primjeniti.To nisam stigao implementirati.
+
+-Problem kada implementiram ajax nisam riješio. Kada ga implementiram ne rade ni forme ni 
+ button-i. To sam mislio riješiti koristeci jquery tako što bi prepravio vec postojece funkcije.
+
+-Pretraga igraca nije u potpunosti uradena.
+
+3. Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje 
+   (opis rješenja)
+
+-"Nema"
+
+4. Bug-ovi koje ste primijetili ali ne znate rješenje
+
+-Pozicija button-a nije ista kada se otvara na Firefox odnosno na Google Chrome.
+
+-Kada otvorim podstranicu "home" i kada prelazim mišem preko imena neke druge podstranice
+ nije isti efekat kada otvorim neku drugu podstranicu i prelazim mišem preko imena neke 
+ druge podstranice.
+
+5. Lista fajlova u formatu NAZIVFAJLA - Opis u vidu jedne recenice šta se u fajlu nalazi
+
+Samo su napisani dodani fajlovi.
+home.js - JavaScript file služi za Carousel.
+team.js - JavaScript file služi za pretragu igraca.
+shop.js - JavaScript file služi za online kupovinu.
+
+U folderu "sa Ajaxom" nalazi vecina gotovo istih fajlova uz samo male promjene.
+npr. club_ajax.html je gotovo identican kao club.html, samo je izbacen meni iz html
+ajax.js - JavaScript file služi za implementaciju ajax-a
+
+##Spirala 1
+
 1. Šta je uradeno?
 
 -Web stranica sadrži pet podstranica: home, match, team, shop i club. Svaka podstranica 

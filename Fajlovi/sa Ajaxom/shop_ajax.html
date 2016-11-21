@@ -2,52 +2,38 @@
 <HTML>
 <HEAD>
 <TITLE>Spirala 1</TITLE>
-<link rel="stylesheet" type="text/css" href="stilZaTeam.css">
-<SCRIPT src="team.js"></SCRIPT>
+<link rel="stylesheet" type="text/css" href="stilZaShop.css">
+<SCRIPT src="shop.js"></SCRIPT>
 </HEAD>
 <BODY onload="lokalnaPohrana()">
 
-<div class="nav">
-      <ul>
-        <li class="home"><a href="LiverpoolFC.html">Home</a></li>
-        <li class="match"><a href="match.html">Match</a></li>
-        <li class="team"><a class="active" href="#">Team</a></li>
-        <li class="shop"><a href="shop.html">Shop</a></li>
-        <li class="club"><a href="club.html">Club</a></li>
-      </ul>
-</div>
-
-<div id="slika">
-	<img src="http://assets.lfcimages.com/v2/uploads/media/page_banner/0001/28/thumb_27978_page_banner_header_large.jpeg">
-</div>
-
 <div id="vijesti">
-	<p id="tekst">GOALKEEPERS</p>
+	<p id="tekst">MENS FASHION</p>
 	<div id="zaDugmadi">
 		<Button id="dugme">Back</Button>	
 	</div>
 	<div id="kontenjer">
 		<div id="slika">
-			<img src="http://vignette2.wikia.nocookie.net/liverpoolfc/images/d/d1/LKarius.jpg/revision/latest?cb=20160813025558">
+			<img src="http://i3.liverpoolecho.co.uk/incoming/article11129524.ece/ALTERNATES/s615/JS86406148.jpg">
 		</div>
 		<div id="naslov">
-			<p>Loris Karius</p>
+			<p>Philippe Coutinho</p>
 		</div>
 	</div>
 	<div id="kontenjer">
 		<div id="slika">
-			<img src="http://lfcstats.co.uk/simonmignolet1314.jpg">
+			<img src="http://e1.365dm.com/16/02/16-9/20/jurgen-klopp-liverpool-thumbs-up_3412823.jpg?20160208152020">
 		</div>
 		<div id="naslov">
-			<p>Simon Mignolet</p>
+			<p>Jürgen Klopp</p>
 		</div>
 	</div>
 	<div id="kontenjer">
 		<div id="slika">
-			<img src="http://assets.lfcimages.com/v2/uploads/media/misc/0001/26/87e90bac4a6cc490713aba58df7474d6f2cc9a23.jpeg">
+			<img src="http://i.dailymail.co.uk/i/pix/2016/03/12/11/31E27B8600000578-3488979-image-a-37_1457781188985.jpg">
 		</div>
 		<div id="naslov">
-			<p>Alex Manninger</p>
+			<p>Steven Gerrard</p>
 		</div>
 	</div>
 	<div id="zaDugmadi">	
@@ -55,8 +41,9 @@
 	</div>
 </div>
 
+
 <div id="vijesti">
-	<p id="tekst">DEFENDERS</p>
+	<p id="tekst">WOMENS FASHION</p>
 	<div id="zaDugmadi">
 		<Button id="dugme">Back</Button>	
 	</div>
@@ -90,7 +77,7 @@
 </div>
 
 <div id="vijesti">
-	<p id="tekst">MIDFIELDERS</p>
+	<p id="tekst">KIDS FASHION</p>
 	<div id="zaDugmadi">
 		<Button id="dugme">Back</Button>	
 	</div>
@@ -124,57 +111,53 @@
 </div>
 
 <div id="vijesti">
-	<p id="tekst">FORWARDS</p>
-	<div id="zaDugmadi">
-		<Button id="dugme">Back</Button>	
-	</div>
-	<div id="kontenjer">
-		<div id="slika">
-			<img src="http://i3.liverpoolecho.co.uk/incoming/article11129524.ece/ALTERNATES/s615/JS86406148.jpg">
-		</div>
-		<div id="naslov">
-			<p>Philippe Coutinho</p>
-		</div>
-	</div>
-	<div id="kontenjer">
-		<div id="slika">
-			<img src="http://e1.365dm.com/16/02/16-9/20/jurgen-klopp-liverpool-thumbs-up_3412823.jpg?20160208152020">
-		</div>
-		<div id="naslov">
-			<p>Jürgen Klopp</p>
-		</div>
-	</div>
-	<div id="kontenjer">
-		<div id="slika">
-			<img src="http://i.dailymail.co.uk/i/pix/2016/03/12/11/31E27B8600000578-3488979-image-a-37_1457781188985.jpg">
-		</div>
-		<div id="naslov">
-			<p>Steven Gerrard</p>
-		</div>
-	</div>
-	<div id="zaDugmadi">	
-		<Button id="dugme">Next</Button>
-	</div>
-</div>
-
-<div id="vijesti">
-	<div id="podaci">
-		<p id="pretrazivanje">Search player<p>
-		<form>
-  			<p id="ime">Name:</p>
- 			<input type="text" id="imeT"><br>
-			<p id="poruka">X<p>
-			<button type="button" id="search" onclick="pritisnuto()">Search</button>
+	<div id="kupi">
+		<p id="t">MENS FASHION</p>
+		<form action="action_page.php">
+			 <select id="cars" name="artikli1">
+    				<option value="Artikal 1">Artikal 1</option>
+   				<option value="Artikal 2">Artikal 2</option>
+    				<option value="Artikal 3">Artikal 3</option>
+  			        <option value="Artikal 4">Artikal 4</option>
+ 			 </select>
+		<br><br>
+	        <button type="button" id="dodaj" onclick="dodajMensFashion()">Add</button>
+		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari1"></textarea>
+		<button type="button" id="kupiButton" onclick="kupiMensFashion()">Buy</button>	
+		<p id="greskaArtikal">Greska pri unosu artikla!</p>	
 		</form>
 	</div>
-	<div id="podaci">
-		<p id="pretrazivanje">Player name<p>
-		<div id="slikaP">
-		</div>
+	<div id="kupi">
+		<p id="t">WOMENS FASHION</p>
+		<form action="action_page.php">
+			 <select id="cars" name="artikli2">
+    				<option value="Artikal 1">Artikal 1</option>
+   				<option value="Artikal 2">Artikal 2</option>
+    				<option value="Artikal 3">Artikal 3</option>
+  			        <option value="Artikal 4">Artikal 4</option>
+ 			 </select>
+		<br><br>
+	        <button type="button" id="dodaj" onclick="dodajWomensFashion()">Add</button>
+		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari2"></textarea>
+		<button type="button" id="kupiButton" onclick="kupiWomensFashion()">Buy</button>
+		<p id="greskaArtikal">Greska pri unosu artikla!</p>		
+		</form>
 	</div>
-	<div id="podaci">
-		<p id="pretrazivanje">Player info<p>
-		<p>Neki tekst o igracu</p>
+	<div id="kupi">
+		<p id="t">KIDS FASHION</p>
+		<form action="action_page.php">
+			 <select id="cars" name="artikli3">
+    				<option value="Artikal 1">Artikal 1</option>
+   				<option value="Artikal 2">Artikal 2</option>
+    				<option value="Artikal 3">Artikal 3</option>
+  			        <option value="Artikal 4">Artikal 4</option>
+ 			 </select>
+		<br><br>
+	        <button type="button" id="dodaj" onclick="dodajKidsFashion()">Add</button>
+		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari3"></textarea>
+		<button type="button" id="kupiButton" onclick="kupiKidsFashion()">Buy</button>		
+		<p id="greskaArtikal">Greska pri unosu artikla!</p>
+		</form>
 	</div>
 </div>
 

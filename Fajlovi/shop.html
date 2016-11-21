@@ -3,8 +3,9 @@
 <HEAD>
 <TITLE>Spirala 1</TITLE>
 <link rel="stylesheet" type="text/css" href="stilZaShop.css">
+<SCRIPT src="shop.js"></SCRIPT>
 </HEAD>
-<BODY>
+<BODY onload="lokalnaPohrana()">
 
 <div class="nav">
       <ul>
@@ -123,46 +124,46 @@
 	<div id="kupi">
 		<p id="t">MENS FASHION</p>
 		<form action="action_page.php">
-			 <select id="cars">
+			 <select id="cars" name="artikli1">
     				<option value="Artikal 1">Artikal 1</option>
    				<option value="Artikal 2">Artikal 2</option>
     				<option value="Artikal 3">Artikal 3</option>
   			        <option value="Artikal 4">Artikal 4</option>
  			 </select>
 		<br><br>
-	        <button type="button" id="dodaj">Add</button>
-		<textarea id="dodaneStvari" rows="10" cols="15">Ovdje ce se nalaziti dodane stvari.</textarea>
-		<button type="button" id="kupiButton">Buy</button>		
+	        <button type="button" id="dodaj" onclick="dodajMensFashion()">Add</button>
+		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari1"></textarea>
+		<button type="button" id="kupiButton" onclick="kupiMensFashion()">Buy</button>		
 		</form>
 	</div>
 	<div id="kupi">
 		<p id="t">WOMENS FASHION</p>
 		<form action="action_page.php">
-			 <select id="cars">
+			 <select id="cars" name="artikli2">
     				<option value="Artikal 1">Artikal 1</option>
    				<option value="Artikal 2">Artikal 2</option>
     				<option value="Artikal 3">Artikal 3</option>
   			        <option value="Artikal 4">Artikal 4</option>
  			 </select>
 		<br><br>
-	        <button type="button" id="dodaj">Add</button>
-		<textarea id="dodaneStvari" rows="10" cols="15">Ovdje ce se nalaziti dodane stvari.</textarea>
-		<button type="button" id="kupiButton">Buy</button>		
+	        <button type="button" id="dodaj" onclick="dodajWomensFashion()">Add</button>
+		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari2"></textarea>
+		<button type="button" id="kupiButton" onclick="kupiWomensFashion()">Buy</button>		
 		</form>
 	</div>
 	<div id="kupi">
 		<p id="t">KIDS FASHION</p>
 		<form action="action_page.php">
-			 <select id="cars">
+			 <select id="cars" name="artikli3">
     				<option value="Artikal 1">Artikal 1</option>
    				<option value="Artikal 2">Artikal 2</option>
     				<option value="Artikal 3">Artikal 3</option>
   			        <option value="Artikal 4">Artikal 4</option>
  			 </select>
 		<br><br>
-	        <button type="button" id="dodaj">Add</button>
-		<textarea id="dodaneStvari" rows="10" cols="15">Ovdje ce se nalaziti dodane stvari.</textarea>
-		<button type="button" id="kupiButton">Buy</button>		
+	        <button type="button" id="dodaj" onclick="dodajKidsFashion()">Add</button>
+		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari3"></textarea>
+		<button type="button" id="kupiButton" onclick="kupiKidsFashion()">Buy</button>		
 		</form>
 	</div>
 </div>

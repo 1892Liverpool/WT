@@ -1,5 +1,9 @@
+#podstranica{
+	margin-left : 1.5%;
+	margin-right: -1.5%;
+}
 body {
- 	margin: 0;
+  	margin: 0;
   	padding: 0;
   	background: #ccc;
 	background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a7/b6/38/a7b638a44bbdeea3b5300338ff9f8cc8.jpg");
@@ -13,7 +17,6 @@ body {
   	text-align: center;
   	padding: 0;
   	margin-top:20px;
-	margin-bottom: 20px;
 	margin-left:1.5%;
 	position: fixed;
     	top: 0;
@@ -34,86 +37,34 @@ body {
   	transition: .3s background-color;
 }
  
+.nav a:hover {
+  	background-color: #005f5f;
+}
+ 
 .nav a.active {
   	background-color: #DDDDDD;
   	color: #444;
   	cursor: default;
 }
 
-#vijesti {
-	margin-bottom:20px;
-	margin-left:1.5%;
-	margin-right: 1.5%;
-	margin-top: 90px;
-	width: 97%;
-	height: 300px;
-	background-color: #DDDDDD;
-}
-#vijesti #dugme{
-	background-color: #4CAF50; /* Green */
-    	border: none;
-    	color: white;
-    	padding: 15px 20px;
-    	text-align: center;
-    	text-decoration: none;
-    	font-size: 16px;
-    	cursor: pointer;
-    	transition-duration: 0.4s;
-	margin: 115px auto;
-	word-wrap: break-word;
-	max-width: 100%;
-}
-#vijesti #zaDugmadi{
-	width: 12.5%;
-	height: 100%;
-	background-color: #DDDDDD;
-	text-align: center;
-	float:left;
-}
-#vijesti #kontenjer{	
-	height:100%;
-	width: 25%;
-	background-color: #DDDDDD;
-	float:left;
-}
-#vijesti #kontenjer #slika{
-	width:80%;
-	margin-left: 10%;
-	margin-top:5%;
-	height:70%;
-	border: 1px solid black;
-}
-#vijesti #kontenjer #naslov{
-	background-color:#c6c6c6;
-	width:80%;
-	margin-left: 10%;
-	height:14%;
-	text-align: center;
-	font-size: 110%;
-}
 img {
     	width: 100%;
     	height: 100%;
 }
 #sljedecaUtakmica{
 	float:left;
-	margin-top: 20px;
+	margin-top: 90px;
 	margin-bottom: 20px;
-	width: 47%;
+	margin-left: 1.5%;
+	width: 49%;
 	height: 350px;
 	background-image: url("http://i4.mirror.co.uk/incoming/article8808355.ece/ALTERNATES/s615b/Liverpool-fans.jpg");
 	background-repeat: no-repeat;
 }
 #sljedecaUtakmica #utakmica{
 	font-size: 30px;
-        font-size: 3.5vw;
 	font-weight: bold;
 	margin-top: 1%;
-}
-#sljedecaUtakmica #podaciOUtakmici{
-	font-size: 3.5vw;
-	text-align: center;
-	
 }
 #sljedecaUtakmica #domacin{
 	background-image: url("http://assets.lfcimages.com/v2/uploads/media/crest/0001/17/thumb_16738_crest_medium.png");
@@ -133,25 +84,18 @@ img {
 	margin-left: 30%;
 	float:left;
 }
-#sponzor {
-	background-color:#DDDDDD;
-	float:left;
-	margin-top: 20px;
-	margin-right: 2%;
-	width: 24.5%;
-	height: 350px;
-	background-image: url("http://blog.kevinmaxwell.co.uk/wp-content/uploads/2014/04/Youll-Never-Walk-Alone.jpg");
-	background-repeat: no-repeat;
-	background-size: 111%;
-	background-position: center;
+#sljedecaUtakmica #podaciOUtakmici{
+	font-size:3.5vw;
+	text-align: center;	
 }
 #tabela {
 	background-color: #DDDDDD;
 	float:left;
-	margin-top: 20px;
-	margin-left: 2%;
-	width: 24.5%;
-	height: 350px;
+	margin-top: 90px;
+	margin-right: 5%;
+	margin-left: -1.5%;
+	width: 45%;
+	height: 912px;
 }
 #tabela #t{
 	margin-top:2px;
@@ -173,6 +117,35 @@ img {
 #tabela #t #lfc{
 	color : red;
 }
+#sljedeceUtakmice{
+	background-color: #DDDDDD;
+	float: left;
+	margin-top:20px;
+	margin-left: 1.5%;
+	width:45.5%;
+	height : 525px;
+}
+#sljedeceUtakmice #fixtures{
+	margin-top:9px;
+	margin-left:1%;
+	width:98%;
+	border-collapse: collapse;
+}
+#sljedeceUtakmice #fixtures td{
+	border: 1px solid black;
+}
+#sljedeceUtakmice #fixtures th{
+	border: 1px solid black;
+	height: 56px;
+	text-align: left;
+}
+#sljedeceUtakmice #fixtures #red{
+	background-color:#b0b0b0;
+}
+#sljedeceUtakmice #fixtures #lfc{
+	color : red;
+}
+
 @media screen and (min-width: 600px) {
   .nav li {
     	width: 120px;
@@ -185,23 +158,23 @@ img {
   .nav li {
     	display: inline-block;
     	margin-right: -4px;
-  }  	
+  } 
 }
+
 @media screen and (max-width: 600px) {
-	#vijesti{
+	#tabela{
 		margin-top:245px;
-	}
-	#sponzor{
-		height: 150%;
-		width:100%;
-		background-size: 100%;
+		width: 97%;
 	}
 	#sljedecaUtakmica{
-		width:100%;
+		width:97%;
+		margin-top:20px;
+		margin-left:1.5%;
 	}
-	#tabela{
-		width:100%;
-		margin-left: 0%;
-		margin-top: 5px;
-	}
+	#sljedeceUtakmice{
+		width:97%;
+		margin-top:5px;
+		margin-left:1.5%;
+	}	
+
 }
