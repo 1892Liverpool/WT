@@ -1,4 +1,4 @@
-##Spirala 2
+#Spirala 2
 
 1. Šta je uradeno?
 
@@ -48,7 +48,7 @@ U folderu "sa Ajaxom" nalazi vecina gotovo istih fajlova uz samo male promjene.
 npr. club_ajax.html je gotovo identican kao club.html, samo je izbacen meni iz html
 ajax.js - JavaScript file služi za implementaciju ajax-a
 
-##Spirala 1
+#Spirala 1
 
 1. Šta je uradeno?
 
