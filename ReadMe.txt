@@ -37,6 +37,8 @@ Pretraga je smjestena na user page stranici. Posto nije evidentirano ime i prezi
 pretraga se vrsi po username-u i email-u korisnika, iako nema nekog smisla da obicni korisnik moze
 vidjet imena i email-ove drugih korisnika.
 
+http://sp17054-sp17054.44fs.preview.openshiftapps.com/LiverpoolFC.php
+
 #Spirala 2
 
 1. Šta je uradeno?
