@@ -1,0 +1,197 @@
+	body {
+  	margin: 0;
+  	padding: 0;
+  	background: #ccc;
+	background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a7/b6/38/a7b638a44bbdeea3b5300338ff9f8cc8.jpg");
+	background-attachment: fixed;
+        background-position: center; 
+}
+ 
+.nav ul {
+  	list-style: none;
+  	background-color: #EC1F1F; /*crvena podloga*/
+  	text-align: center;
+  	padding: 0;
+  	margin-top:20px;
+	margin-left:1.5%;
+	position: fixed;
+    	top: 0;
+    	width: 97%;
+}
+.nav li {
+  	font-family: 'Oswald', sans-serif;
+  	font-size: 1.2em;
+  	line-height: 40px;
+  	height: 40px;
+  	border-bottom: 1px solid #888;
+}
+ 
+.nav a {
+  	text-decoration: none;
+  	color: #fff;
+  	display: block;
+  	transition: .3s background-color;
+}
+ 
+.nav a:hover {
+  	background-color: #005f5f;
+}
+ 
+.nav a.active {
+  	background-color: #DDDDDD;
+  	color: #444;
+  	cursor: default;
+}
+
+#login {
+    position: fixed;
+    width : 4%;
+    top: 35px;
+    right: 3%; 
+}
+
+#logout {
+    position: fixed;
+    width : 4%;
+    top: 35px;
+    right: 3%; 
+}
+
+#userpage {
+	position: fixed;
+    width : 4%;
+    top: 35px;
+    right: 7%; 
+}
+
+img {
+    	width: 100%;
+    	height: 100%;
+}
+#sljedecaUtakmica{
+	float:left;
+	margin-top: 90px;
+	margin-bottom: 20px;
+	margin-left: 1.5%;
+	width: 47%;
+	height: 350px;
+	background-image: url("http://i4.mirror.co.uk/incoming/article8808355.ece/ALTERNATES/s615b/Liverpool-fans.jpg");
+	background-repeat: no-repeat;
+}
+#sljedecaUtakmica #utakmica{
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 1%;
+}
+#sljedecaUtakmica #domacin{
+	background-image: url("http://assets.lfcimages.com/v2/uploads/media/crest/0001/17/thumb_16738_crest_medium.png");
+	background-repeat: no-repeat;
+	background-size: 115%;
+	width:20%;
+	height: 50%;
+	margin-left: 12%;
+	float:left;
+}
+#sljedecaUtakmica #gost{
+	background-image: url("http://assets.lfcimages.com/v2/uploads/media/crest/0001/16/thumb_15464_crest_medium.png");
+	background-repeat: no-repeat;
+	background-size: 115%;
+	width:20%;
+	height: 50%;
+	margin-left: 30%;
+	float:left;
+}
+#sljedecaUtakmica #podaciOUtakmici{
+	font-size:3.5vw;
+	text-align: center;	
+}
+#tabela {
+	background-color: #DDDDDD;
+	float:left;
+	margin-top: 90px;
+	margin-right: 5%;
+	margin-left: 1.5%;
+	width: 45%;
+	height: 912px;
+}
+#tabela #t{
+	margin-top:2px;
+	margin-left:1%;
+	width:98%;
+	border-collapse: collapse;
+}
+#tabela #t td{
+	border: 1px solid black;
+}
+#tabela #t th{
+	border: 1px solid black;
+	height: 43px;
+	text-align: left;
+}
+#tabela #t #red{
+	background-color:#b0b0b0;
+}
+#tabela #t #lfc{
+	color : red;
+}
+#sljedeceUtakmice{
+	background-color: #DDDDDD;
+	float: left;
+	margin-top:20px;
+	margin-left: 1.5%;
+	width:45.5%;
+	height : 525px;
+}
+#sljedeceUtakmice #fixtures{
+	margin-top:9px;
+	margin-left:1%;
+	width:98%;
+	border-collapse: collapse;
+}
+#sljedeceUtakmice #fixtures td{
+	border: 1px solid black;
+}
+#sljedeceUtakmice #fixtures th{
+	border: 1px solid black;
+	height: 56px;
+	text-align: left;
+}
+#sljedeceUtakmice #fixtures #red{
+	background-color:#b0b0b0;
+}
+#sljedeceUtakmice #fixtures #lfc{
+	color : red;
+}
+
+@media screen and (min-width: 600px) {
+  .nav li {
+    	width: 120px;
+    	border-bottom: none;
+    	height: 50px;
+    	line-height: 50px;
+    	font-size: 1.4em;
+  }
+ 
+  .nav li {
+    	display: inline-block;
+    	margin-right: -4px;
+  } 
+}
+
+@media screen and (max-width: 600px) {
+	#tabela{
+		margin-top:245px;
+		width: 97%;
+	}
+	#sljedecaUtakmica{
+		width:97%;
+		margin-top:20px;
+		margin-left:1.5%;
+	}
+	#sljedeceUtakmice{
+		width:97%;
+		margin-top:5px;
+		margin-left:1.5%;
+	}	
+
+}

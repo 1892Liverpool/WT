@@ -1,0 +1,39 @@
+body {
+ 	margin: 0;
+  	padding: 0;
+  	background: #ccc;
+	background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a7/b6/38/a7b638a44bbdeea3b5300338ff9f8cc8.jpg");
+	background-attachment: fixed;
+        background-position: center; 
+}
+
+#register {
+	width: 30%;
+	margin:auto;
+	margin-top : 200px;
+}
+
+#username {
+	margin-left: 15%;
+}
+
+#email {
+	margin-left: 21.5%;
+}
+
+#password {
+	margin-left: 16%;
+}
+
+#confirmPassword {
+	margin-left: 2%;
+}
+
+#login {
+	width: 16%;
+	margin-left: 31%;
+}
+
+#a1 {
+	margin-left: 34%;
+}

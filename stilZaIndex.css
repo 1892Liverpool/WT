@@ -1,0 +1,118 @@
+		body {
+ 	margin: 0;
+  	padding: 0;
+  	background: #ccc;
+	background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a7/b6/38/a7b638a44bbdeea3b5300338ff9f8cc8.jpg");
+	background-attachment: fixed;
+        background-position: center; 
+}
+
+#naslov{
+	background-color: #CCCCCC;
+}
+
+#userpage{
+	text-align: center;
+}
+
+#welcome {
+	text-align: center;
+}
+
+#ispisKorisnika{
+	background-color: #CCCCCC;
+	text-align: center;
+}
+
+#email {
+	margin: auto;
+}
+
+#ispisArtikala{
+	background-color: #CCCCCC;
+}
+
+#mens{
+	width:33.33333%;
+	text-align: center;
+	float: left;
+	background-color: #CCCCCC;
+}
+
+#mensTabela{
+	margin:auto;
+}
+
+#add{
+	margin-left: 5%;
+}
+
+#delete{
+	margin-left: -1%;
+}
+
+#womens{
+	width: 33.33333%;
+	text-align: center;
+	float: left;
+	background-color: #CCCCCC;
+}
+
+#womensTable{
+	margin:auto;
+}
+
+#kids{
+	width: 33.33333%;
+	text-align: center;
+	float: left;
+	background-color: #CCCCCC;
+}
+
+#kidsTable{
+	margin:auto;
+}
+
+#pretraga{
+	background-color: #CCCCCC;
+	clear:both;
+	text-align: center;
+}
+
+#pret{
+	margin-top: 20px;
+}
+
+#search{
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+#download{
+	float: left;
+	margin-right: 0%;
+}
+
+#generate{
+	float: left;
+	margin-left: 15%;
+}
+
+#changePassword{
+	float: left;
+	margin-left: 15%;
+}
+
+#logout{
+	float: left;
+	margin-left: 39%;
+	margin-top: -17px;
+}
+
+#nazad{
+	float: left;
+	margin-top:  -38px;
+	margin-left: 90%;
+}
+
+

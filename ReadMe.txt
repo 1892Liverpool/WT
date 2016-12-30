@@ -1,3 +1,42 @@
+#Spirala 3 
+
+1. Zadatak
+
+-Serijalizacija podataka se vrsi kod registracije, promjene sifre, pretrage igraca na podstranici 
+team i kod user page ukoliko se admin prijavi. 
+-Kod registracije korisnika podaci koji se serijalizuju su: username, email i password. Serijalizacija
+navedenih podataka se vrsi tako sto se kreira xml fajl. Ime xml fajla je username, 
+a u tom fajl se nalazi email i password. Uradena je validacija u php-u i u javascript-u.
+-Kod promjene sifre vrsi se promjena upisanog passworda u xml fajlu. Uradena je validacija 
+u php i javascript.
+-Kod pretrage igraca serijalizuje se tekst koji se unosi i username korisnika koji je vrsio pretragu.
+Ukoliko nije prijavljen ni jedan korisnik, onda se umjesto username pise anonymous kao ime xml fajla. 
+-Kod user page se vrsi serijalizacija artikala koje shop posjeduje, ali samo u slucaju kada
+se prijavi admin. Ukoliko se prijavio obicni korisnik tada on samo moze da vidi spisak artikala 
+i da vrsi pretragu korisnika koja ce biti poslije objasnjenja. Admin ima sve opcije kao i 
+obicni korisnik i jos neke dodatne. Dodatne opcije su brisanje korisnika (brisanje xml fajla
+koji pripada tom korisniku), rad sa artiklima (dodavanje, brisanje i promjena artikala u shopu),
+generisanje PDF-a sa svim artiklima koje shop posjeduje i download csv file koji sadrzi 
+sve artikle i kojoj vrsti artikal pripada (muski, zenski i djeciji artikal). Uradena je 
+validacija u php-u i javascript-u.
+
+2. Zadatak
+
+Adminu je omoguceno download podataka(spisak artikala) u obliku csv fajla. Button za download
+je smjesten u dnu user page stranice. Kod za download je u index.php fajlu.
+
+3. Zadatak
+
+Admin ima opciju generisanja izvjestaja o spisku artikala u obliku pdf-a. Button za download
+je smjesten u dnu user page stranice. Kod za izvjesta je u index.php fajlu. Za generisanje 
+izvjestaja koristena je FPDF PHP klasa.
+
+4. Zadatak 
+
+Pretraga je smjestena na user page stranici. Posto nije evidentirano ime i prezime korisnika, 
+pretraga se vrsi po username-u i email-u korisnika, iako nema nekog smisla da obicni korisnik moze
+vidjet imena i email-ove drugih korisnika.
+
 #Spirala 2
 
 1. Šta je uradeno?
