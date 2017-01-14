@@ -5,8 +5,7 @@ a)Tabele koje su povezane su: korisnik, kupovina i pretraga. Postoje jos tabele 
 b)PHP skripta koja prebaciva sve podatke iz XML u bazu je baza.php
 c)Gdje god sam podatke kupio iz XML sam zakomentirao u kodu, i ispod toga sam napisao kod gdje se
   kupe podaci iz baze.
-d)Ne radi sa bazom
-  http://spirala4-wt17054.44fs.preview.openshiftapps.com/
+d)http://spirala4-17054wtspirala4.44fs.preview.openshiftapps.com/LiverpoolFC.php
 
 #Spirala 3 
 
