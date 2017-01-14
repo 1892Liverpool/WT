@@ -1,11 +1,13 @@
 <?php 
 
-		$dbname = "wt";
+		/*$dbname = "wt";
 		$servername = "localhost";
 		$username = "admin";
 		$password = "admin";
 
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		$conn = mysqli_connect($servername, $username, $password, $dbname);*/
+
+		$conn = new PDO('mysql:host=' . getenv('MYSQL_SERVICE_HOST') . ';port=3306;dbname=sampledb', 'user6YP', 'e2fTWFNufhxsejUg');
 
 		if (!$conn) {
     		die("Connection failed: " . mysqli_connect_error());
