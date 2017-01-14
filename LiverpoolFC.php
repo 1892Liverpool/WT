@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	
 	if(isset($_GET['login'])){
 		header('Location: login.php');
@@ -19,7 +19,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
-<TITLE>Spirala 3</TITLE>
+<TITLE>Spirala 4</TITLE>
 <link rel="stylesheet" type="text/css" href="stilZaHome.css">
 <SCRIPT src="home.js"></SCRIPT>
 
