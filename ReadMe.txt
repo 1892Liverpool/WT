@@ -1,3 +1,13 @@
+#Spirala 4
+
+a)Tabele koje su povezane su: korisnik, kupovina i pretraga. Postoje jos tabele kidsfashion,
+  mensfashion i womensfasfion. 
+b)PHP skripta koja prebaciva sve podatke iz XML u bazu je baza.php
+c)Gdje god sam podatke kupio iz XML sam zakomentirao u kodu, i ispod toga sam napisao kod gdje se
+  kupe podaci iz baze.
+d)Ne radi sa bazom
+  http://spirala4-wt17054.44fs.preview.openshiftapps.com/
+
 #Spirala 3 
 
 1. Zadatak
