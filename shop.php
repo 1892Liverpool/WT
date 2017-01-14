@@ -1,5 +1,16 @@
 <?php
 	
+	$dbname = "wt";
+	$servername = "localhost";
+	$username = "admin";
+	$password = "admin";
+
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	if (!$conn) {
+   		die("Connection failed: " . mysqli_connect_error());
+	}
+
 	if(isset($_GET['login'])){
 		header('Location: login.php');
 		die;
@@ -10,6 +21,14 @@
 		session_destroy();
 		header('Location: shop.php');
 		die;
+	}
+
+	if(isset($_GET['kupiButton'])){
+		
+		#print_r('semin');
+		$artikli = $_GET['dodaneStvari1'];
+		print_r($artikli);
+
 	}
 
 ?>
@@ -157,14 +176,21 @@
 <div id="vijesti">
 	<div id="kupi">
 		<p id="t">MENS FASHION</p>
-		<form action="action_page.php">
+		<form method="get" action="">
 			 <select id="cars" name="artikli1">
     				
     				<?php
 
-    					$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
-    					foreach ($xml -> artikal as $a) {
-    						echo '<option value="'. $a .'">' . $a . '</option>';
+    					#$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
+    					#foreach ($xml -> artikal as $a) {
+    					#	echo '<option value="'. $a .'">' . $a . '</option>';
+    					#}
+
+    					#Spirala 4
+    					$rezultati = "select * from mensfashion;";
+    					$rezultati = $conn->query($rezultati);
+    					foreach ($rezultati as $r) {
+    						echo '<option value="'. $r['artikal'] .'">' . $r['artikal'] . '</option>';
     					}
 
     				?>
@@ -172,8 +198,9 @@
  			 </select>
 		<br><br>
 	        <button type="button" id="dodaj" onclick="dodajMensFashion()">Add</button>
-		<textarea id="dodaneStvari" rows="10" cols="15" name="dodaneStvari1"></textarea>
-		<button type="button" id="kupiButton" onclick="kupiMensFashion()">Buy</button>		
+			<textarea id="dodaneStvari1" rows="10" cols="15" name="dodaneStvari1"></textarea>
+			<button type="button" id="kupiButton" name="kupiButtonM" onclick="kupiMensFashion()">Buy</button>
+				
 		</form>
 	</div>
 	<div id="kupi">
@@ -183,9 +210,16 @@
     				
 			 		<?php
 
-    					$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
-    					foreach ($xml -> artikal as $a) {
-    						echo '<option value="'. $a .'">' . $a . '</option>';
+    					#$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
+    					#foreach ($xml -> artikal as $a) {
+    					#	echo '<option value="'. $a .'">' . $a . '</option>';
+    					#}
+
+			 			#Spirala 4
+    					$rezultati = "select * from womensfashion;";
+    					$rezultati = $conn->query($rezultati);
+    					foreach ($rezultati as $r) {
+    						echo '<option value="'. $r['artikal'] .'">' . $r['artikal'] . '</option>';
     					}
 
     				?>
@@ -204,9 +238,16 @@
 
     				<?php
 
-    					$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
-    					foreach ($xml -> artikal as $a) {
-    						echo '<option value="'. $a .'">' . $a . '</option>';
+    					#$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
+    					#foreach ($xml -> artikal as $a) {
+    					#	echo '<option value="'. $a .'">' . $a . '</option>';
+    					#}
+
+    					#Spirala 4
+    					$rezultati = "select * from kidsfashion;";
+    					$rezultati = $conn->query($rezultati);
+    					foreach ($rezultati as $r) {
+    						echo '<option value="'. $r['artikal'] .'">' . $r['artikal'] . '</option>';
     					}
 
     				?>

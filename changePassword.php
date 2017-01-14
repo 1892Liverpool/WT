@@ -6,6 +6,17 @@
 		die;
 	}
 
+	$dbname = "wt";
+	$servername = "localhost";
+	$username = "admin";
+	$password = "admin";
+
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	if (!$conn) {
+    	die("Connection failed: " . mysqli_connect_error());
+	}
+
 
 	$errors = array();
 	if(isset($_POST['changePassword'])){
@@ -35,11 +46,33 @@
 			$brojGresaka++;
 		}
 
-		$xml = new SimpleXmlElement('korisnici/' . $_SESSION['username'] . '.xml' , 0 , true);
-		if($old == $xml -> password){
+		#$xml = new SimpleXmlElement('korisnici/' . $_SESSION['username'] . '.xml' , 0 , true);
+		#if($old == $xml -> password){
+		#	if($new == $confirmNew ){
+		#		$xml -> password = $new;
+		#		$xml -> asXML('korisnici/' . $_SESSION['username'] . '.xml');
+		#		header('Location: logout.php');
+		#		die;
+		#	}
+		#}
+
+		#Spirala 4
+		$usern = $_SESSION['username'];
+		$rezultat = "select * from korisnik where username = '$usern';";
+		$rezultat = $conn->query($rezultat);
+		
+		$pass = "";
+		$id = "";
+		foreach ($rezultat as $r) {
+			$id = $r['id'];
+			$pass = $r['password'];
+			break;
+		}
+
+		if($old == $pass){
 			if($new == $confirmNew ){
-				$xml -> password = $new;
-				$xml -> asXML('korisnici/' . $_SESSION['username'] . '.xml');
+				$rezultat = "update korisnik set password = '$new' where id = '$id';";
+				$rezultat = $conn -> query($rezultat);
 				header('Location: logout.php');
 				die;
 			}

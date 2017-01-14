@@ -14,14 +14,50 @@
 	}
 
 	if(isset($_POST['search'])){
-		$xml = new SimpleXMLElement('<korisnik></korisnik>');
-		$xml -> addChild('tekst' , $_POST['imeT']);
+		#$xml = new SimpleXMLElement('<korisnik></korisnik>');
+		#$xml -> addChild('tekst' , $_POST['imeT']);
+		#if(session_status() == PHP_SESSION_NONE){
+		#	$xml -> asXML('pretrage/anonymous.xml');
+		#}
+		#else {
+		#	$xml -> asXML('pretrage/' . $_SESSION['username'] . '.xml');
+		#}
+
+		$dbname = "wt";
+		$servername = "localhost";
+		$username = "admin";
+		$password = "admin";
+
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+		if (!$conn) {
+    		die("Connection failed: " . mysqli_connect_error());
+		}
+
+		$tekst = $_POST['imeT'];
+		
+
 		if(session_status() == PHP_SESSION_NONE){
-			$xml -> asXML('pretrage/anonymous.xml');
+
+			$usern = $_SESSION['username'];
+			$rezultat = "select * from korisnik where username = '$usern';";
+			$rezultat = $conn->query($rezultat);
+
+			$id = "";
+			foreach ($rezultat as $r) {
+				$id = $r['id'];
+				break;
+			}
+			
+			$rezultat = "insert into pretraga (id , korisnik , tekst) values (null , '$id' , '$tekst');";
+			$rezultat = $conn-> query($rezultat);
+
 		}
 		else {
-			$xml -> asXML('pretrage/' . $_SESSION['username'] . '.xml');
+			$rezultat = "insert into pretraga (id , korisnik , tekst) values (null , 121 , '$tekst');";
+			$rezultat = $conn-> query($rezultat);
 		}
+
 	}
 
 ?>

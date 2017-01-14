@@ -4,6 +4,20 @@
 	$passw = ""; 
 	$greska = false;
 
+	$usern = "";
+	$email = "";
+
+	$dbname = "wt";
+	$servername = "localhost";
+	$username = "admin";
+	$password = "admin";
+
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	if (!$conn) {
+    	die("Connection failed: " . mysqli_connect_error());
+	}
+
 	$errors = array();
 	if(isset($_POST['login'])){
 		$usern = $_POST['username'];
@@ -21,15 +35,37 @@
 			$brojGresaka++;	
 		}
 
-		if(file_exists('korisnici/' . $username . '.xml')){
-			$xml = new SimpleXMLElement('korisnici/' . $username . '.xml' , 0 , true);
-			if($password == $xml -> password){
+		#if(file_exists('korisnici/' . $username . '.xml')){
+		#	$xml = new SimpleXMLElement('korisnici/' . $username . '.xml' , 0 , true);
+		#	if($password == $xml -> password){
+		#		session_start();
+		#		$_SESSION['username'] = $username;
+		#		header('Location: index.php');
+		#		die;
+		#	}
+		#}
+
+		#Spirala 4
+		$rezultat = "select * from korisnik where username = '$username';";
+		$rezultat = $conn->query($rezultat);
+
+		if($rezultat -> num_rows > 0){
+
+			$pass = "";
+			foreach ($rezultat as $r) {
+				$pass = $r['password'];
+				break;
+			}
+
+			if($password == $pass){
 				session_start();
 				$_SESSION['username'] = $username;
 				header('Location: index.php');
 				die;
 			}
 		}
+
+
 		if($brojGresaka == 0){
 			$errors[] = 'Wrong username or password!';
 		}

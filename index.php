@@ -1,5 +1,16 @@
 <?php
 	
+	$dbname = "wt";
+	$servername = "localhost";
+	$username = "admin";
+	$password = "admin";
+
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	if (!$conn) {
+    	die("Connection failed: " . mysqli_connect_error());
+	}
+
 	$izlaz = '';
 
 	$emailp = "";
@@ -10,8 +21,18 @@
 	$artikalkp = "";
 	$changekp = "";
 
+	#session_start();
+	#if(!file_exists('korisnici/' . $_SESSION['username'] . '.xml')){
+	#	header('Location: LiverpoolFC.php');
+	#	die;
+	#}
+
+	#Spirala 4
 	session_start();
-	if(!file_exists('korisnici/' . $_SESSION['username'] . '.xml')){
+	$usern = $_SESSION['username'];
+	$rezultat = "select * from korisnik where username = '$usern';";
+	$rezultat = $conn->query($rezultat);
+	if($rezultat -> num_rows < 1){
 		header('Location: LiverpoolFC.php');
 		die;
 	}
@@ -23,6 +44,10 @@
 		if($email == ""){
 			$errorsEmail[] = 'Email is empty!';
 		}
+
+		#Spirala 4
+		$rezultat = "delete from korisnik where email = '$email';";
+		$rezultat = $conn -> query($rezultat);
 
 		$files = glob('korisnici/*.xml');
 			$i = 0;
@@ -55,6 +80,12 @@
 			$errorsMens[] = 'Item must contain only letters!';
 		}
 		else {
+
+			#Spirala 4
+			$rezultat = "insert into mensfashion (id , artikal) values (null , '$artikal');";
+			$rezultat = $conn -> query($rezultat);
+
+
 			$xml = new SimpleXMLElement('<artikli></artikli>');
 			$xml2 = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
 			foreach($xml2 -> artikal as $a){
@@ -75,6 +106,14 @@
 		if($artikal == ""){
 			$errorsMens[] = 'Item is empty!';
 		}
+
+		#Spirala 4
+		#ovdje ne treba provjera na greske, jer se pri unosu vrsi provjera artikla
+		#tako da npr. ne moze se unijeti prazan string pri unosu artikla u bazu 
+		#ukoliko ostavimo prazno polje pri brisanju, upit ce se izvrsili, ali nece 
+		#imati nikakvog efekta
+		$rezultat = "delete from mensfashion where artikal = '$artikal';";
+		$rezultat = $conn -> query($rezultat);
 
 		$ima = false;
 		$xml = new SimpleXMLElement('<artikli></artikli>');
@@ -108,6 +147,11 @@
 			$errorsWomen[] = 'Item must contain only letters!';
 		}
 		else {
+
+			#Spirala 4
+			$rezultat = "insert into womensfashion (id , artikal) values (null , '$artikal');";
+			$rezultat = $conn -> query($rezultat);
+
 			$xml = new SimpleXMLElement('<artikli></artikli>');
 			$xml2 = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
 			foreach($xml2 -> artikal as $a){
@@ -128,6 +172,10 @@
 		if($artikal == ""){
 			$errorsWomen[] = 'Item is empty!';
 		}
+
+		#Spirala 4
+		$rezultat = "delete from womensfashion where artikal = '$artikal';";
+		$rezultat = $conn -> query($rezultat);
 
 		$ima = false;
 		$xml = new SimpleXMLElement('<artikli></artikli>');
@@ -161,6 +209,11 @@
 			$errorsKid[] = 'Item must contain only letters!';
 		}
 		else {
+
+			#Spirala 4
+			$rezultat = "insert into kidsfashion (id , artikal) values (null , '$artikal');";
+			$rezultat = $conn -> query($rezultat);
+
 			$xml = new SimpleXMLElement('<artikli></artikli>');
 			$xml2 = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
 			foreach($xml2 -> artikal as $a){
@@ -181,6 +234,10 @@
 		if($artikal == ""){
 			$errorsKid[] = 'Item is empty!';
 		}
+
+		#Spirala 4
+		$rezultat = "delete from kidsfashion where artikal = '$artikal';";
+		$rezultat = $conn -> query($rezultat);
 
 		$ima = false;
 		$xml = new SimpleXMLElement('<artikli></artikli>');
@@ -218,6 +275,13 @@
 		}
 		else if (preg_match('/[^A-Za-z ] /', $izmjena)){
 			$errorsChangeMen[] = 'Item must contain only letters!';
+		}
+
+		#Spirala 4
+		#ovdje treba provjera za polje izmjena
+		if(count($errorsChangeMen) < 1){
+			$rezultat = "update mensfashion set artikal = '$izmjena' where artikal = '$artikal';";
+			$rezultat = $conn -> query($rezultat);
 		}
 
 		$ima = false;
@@ -264,6 +328,13 @@
 		}
 		else if (preg_match('/[^A-Za-z ]/', $izmjena)){
 			$errorsChangeWomen[] = 'Item must contain only letters!';
+		}
+
+		#Spirala 4
+		#ovdje treba provjera za polje izmjena
+		if(count($errorsChangeWomen) < 1){
+			$rezultat = "update womensfashion set artikal = '$izmjena' where artikal = '$artikal';";
+			$rezultat = $conn -> query($rezultat);
 		}
 
 		$ima = false;
@@ -313,6 +384,13 @@
 			$errorsChangeKid[] = 'Item must contain only letters!';
 		}
 
+		#Spirala 4
+		#ovdje treba provjera za polje izmjena
+		if(count($errorsChangeKid) < 1){
+			$rezultat = "update kidsfashion set artikal = '$izmjena' where artikal = '$artikal';";
+			$rezultat = $conn -> query($rezultat);
+		}
+
 		$ima = false;
 		$xml = new SimpleXMLElement('<artikli></artikli>');
 		$xml2 = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
@@ -349,21 +427,45 @@
 		$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
 		$row = array('Item' , 'Item type');
 		fputcsv($csv , $row , ',');
-		foreach ($xml -> artikal as $a) {
-			$row = array($a , 'Men');
-			fputcsv($csv , $row , ',');
+		#foreach ($xml -> artikal as $a) {
+		#	$row = array($a , 'Men');
+	    #	fputcsv($csv , $row , ',');
+		#}
+
+		#Spirala 4
+		$rezultat = "select * from mensfashion;";
+		$rezultat = $conn->query($rezultat);
+		foreach ($rezultat as $r) {
+			$row = array($r['artikal'] , 'Men');
+	    	fputcsv($csv , $row , ',');
 		}
 
-		$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
-		foreach ($xml -> artikal as $a) {
-			$row = array($a , 'Women');
-			fputcsv($csv , $row , ',');
+		#$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
+		#foreach ($xml -> artikal as $a) {
+		#	$row = array($a , 'Women');
+		#	fputcsv($csv , $row , ',');
+		#}
+
+		#Spirala 4
+		$rezultat = "select * from womensfashion;";
+		$rezultat = $conn->query($rezultat);
+		foreach ($rezultat as $r) {
+			$row = array($r['artikal'] , 'Women');
+	    	fputcsv($csv , $row , ',');
 		}
 
-		$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
-		foreach ($xml -> artikal as $a) {
-			$row = array($a , 'Kid');
-			fputcsv($csv , $row , ',');
+		#$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
+		#foreach ($xml -> artikal as $a) {
+		#	$row = array($a , 'Kid');
+		#	fputcsv($csv , $row , ',');
+		#}
+
+		#Spirala 4
+		$rezultat = "select * from kidsfashion;";
+		$rezultat = $conn->query($rezultat);
+		foreach ($rezultat as $r) {
+			$row = array($r['artikal'] , 'Kid');
+	    	fputcsv($csv , $row , ',');
 		}
 
 		exit();
@@ -379,14 +481,31 @@
 
 		$i = 17;
 		
-		$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
+		#$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
+		#$pdf -> SetFont('Arial' , 'B' , 12);
+		#$pdf -> SetXY(4 , 10);
+		#$pdf -> Write(0 , 'Men items:');
+		#$pdf -> SetFont('Arial' , 'I' , 12);
+    	#foreach ($xml -> artikal as $a) {
+    	#	$pdf->SetXY(4, $i);
+		#	$pdf->Write(0, $a);
+    	#	if($i > 260){
+    	#		$pdf -> addPage();
+    	#		$i = 17;
+    	#	}
+    	#	$i = $i + 7;
+    	#}
+
+		#Spirala 4
+		$rezultat = "select * from mensfashion;";
+		$rezultat = $conn->query($rezultat);
 		$pdf -> SetFont('Arial' , 'B' , 12);
 		$pdf -> SetXY(4 , 10);
 		$pdf -> Write(0 , 'Men items:');
 		$pdf -> SetFont('Arial' , 'I' , 12);
-    	foreach ($xml -> artikal as $a) {
+    	foreach ($rezultat as $r) {
     		$pdf->SetXY(4, $i);
-			$pdf->Write(0, $a);
+			$pdf->Write(0, $r['artikal']);
     		if($i > 260){
     			$pdf -> addPage();
     			$i = 17;
@@ -394,15 +513,34 @@
     		$i = $i + 7;
     	}
 
-    	$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
+    	#Spirala 4
+    	#$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
+		#$pdf -> SetFont('Arial' , 'B' , 12);
+		#$pdf -> SetXY(4 , $i);
+		#$pdf -> Write(0 , 'Women items:');
+		#$pdf -> SetFont('Arial' , 'I' , 12);
+		#$i = $i + 7;
+    	#foreach ($xml -> artikal as $a) {
+    	#	$pdf->SetXY(4, $i);
+		#	$pdf->Write(0, $a);
+    	#	if($i > 260){
+    	#		$pdf -> addPage();
+    	#		$i = 17;
+    	#	}
+    	#	$i = $i + 7;
+    	#}
+
+    	#Spirala 4
+    	$rezultat = "select * from womensfashion;";
+		$rezultat = $conn->query($rezultat);
 		$pdf -> SetFont('Arial' , 'B' , 12);
 		$pdf -> SetXY(4 , $i);
 		$pdf -> Write(0 , 'Women items:');
 		$pdf -> SetFont('Arial' , 'I' , 12);
 		$i = $i + 7;
-    	foreach ($xml -> artikal as $a) {
+    	foreach ($rezultat as $r) {
     		$pdf->SetXY(4, $i);
-			$pdf->Write(0, $a);
+			$pdf->Write(0, $r['artikal']);
     		if($i > 260){
     			$pdf -> addPage();
     			$i = 17;
@@ -410,23 +548,52 @@
     		$i = $i + 7;
     	}
     	
-    	$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
+
+  
+
+
+    	#$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
+		#$pdf -> SetFont('Arial' , 'B' , 12);
+		#$pdf -> SetXY(4 , $i);
+		#$pdf -> Write(0 , 'Women items:');
+		#$pdf -> SetFont('Arial' , 'I' , 12);
+		#$i = $i + 7;
+    	#foreach ($xml -> artikal as $a) {
+    	#	$pdf->SetXY(4, $i);
+		#	$pdf->Write(0, $a);
+    	#	if($i > 260){
+    	#		$pdf -> addPage();
+    	#		$i = 17;
+    	#	}
+    	#	$i = $i + 7;
+    	#}
+
+    	#Spirala 4
+    	$rezultat = "select * from kidsfashion;";
+		$rezultat = $conn->query($rezultat);
 		$pdf -> SetFont('Arial' , 'B' , 12);
 		$pdf -> SetXY(4 , $i);
-		$pdf -> Write(0 , 'Women items:');
+		$pdf -> Write(0 , 'Kid items:');
 		$pdf -> SetFont('Arial' , 'I' , 12);
 		$i = $i + 7;
-    	foreach ($xml -> artikal as $a) {
+    	foreach ($rezultat as $r) {
     		$pdf->SetXY(4, $i);
-			$pdf->Write(0, $a);
+			$pdf->Write(0, $r['artikal']);
     		if($i > 260){
     			$pdf -> addPage();
     			$i = 17;
     		}
     		$i = $i + 7;
     	}
+
     	
 		$pdf -> output();
+	}
+
+	if(isset($_POST['baza'])){
+	
+		header('Location: baza.php');
+
 	}
 
 
@@ -489,14 +656,27 @@
 					<th>Email</th>';
 
 				
-						$files = glob('korisnici/*.xml');
-						foreach($files as $file){
-							$xml = new SimpleXMLElement($file , 0 , true);
-							echo '
-							<tr> 
-								<td>' . basename($file , '.xml') . '</td>
-								<td>' . $xml -> email . '</td>
-							</tr>';
+						#$files = glob('korisnici/*.xml');
+						#foreach($files as $file){
+						#	$xml = new SimpleXMLElement($file , 0 , true);
+						#	echo '
+						#	<tr> 
+						#		<td>' . basename($file , '.xml') . '</td>
+						#		<td>' . $xml -> email . '</td>
+						#	</tr>';
+						#}
+
+						#Spirala 4
+						$rezultat = "select * from korisnik;";
+						$rezultat = $conn->query($rezultat);
+						foreach($rezultat as $r){
+							if($r['username'] != 'anonymous'){
+								echo '
+								<tr> 
+									<td>' . $r['username'] . '</td>
+									<td>' . $r['email'] . '</td>
+								</tr>';
+							}
 						}
 					
 			    
@@ -517,10 +697,19 @@
 				<tr>
 					<th>Mens fashion</th>';
 
-						$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
-    					foreach ($xml -> artikal as $a) {
+						#$xml = new SimpleXMLElement('artikli/mensfashion.xml' , 0 , true);
+    					#foreach ($xml -> artikal as $a) {
+    					#	echo '<tr>
+    					#		<td>' . $a . '</td>
+    					#	</tr>';
+    					#}
+
+						#Spirala 4
+    					$rezultat = "select * from mensfashion;";
+    					$rezultat = $conn->query($rezultat);
+    					foreach ($rezultat as $r) {
     						echo '<tr>
-    							<td>' . $a . '</td>
+    							<td>' . $r['artikal'] . '</td>
     						</tr>';
     					}
 
@@ -553,10 +742,19 @@
 				<tr>
 					<th>Womens fashion</th>';
 
-						$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
-    					foreach ($xml -> artikal as $a) {
+						#$xml = new SimpleXMLElement('artikli/womensfashion.xml' , 0 , true);
+    					#foreach ($xml -> artikal as $a) {
+    					#	echo '<tr>
+    					#		<td>' . $a . '</td>
+    					#	</tr>';
+    					#}
+
+						#Spirala 4
+						$rezultat = "select * from womensfashion;";
+    					$rezultat = $conn->query($rezultat);
+    					foreach ($rezultat as $r) {
     						echo '<tr>
-    							<td>' . $a . '</td>
+    							<td>' . $r['artikal'] . '</td>
     						</tr>';
     					}
 
@@ -589,12 +787,22 @@
 				<tr>
 					<th>Kids fashion</th>';
 
-						$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
-    					foreach ($xml -> artikal as $a) {
+						#$xml = new SimpleXMLElement('artikli/kidsfashion.xml' , 0 , true);
+    					#foreach ($xml -> artikal as $a) {
+    					#	echo '<tr>
+    					#		<td>' . $a . '</td>
+    					#	</tr>';
+    					#}
+
+						#Spirala 4
+						$rezultat = "select * from kidsfashion;";
+    					$rezultat = $conn->query($rezultat);
+    					foreach ($rezultat as $r) {
     						echo '<tr>
-    							<td>' . $a . '</td>
+    							<td>' . $r['artikal'] . '</td>
     						</tr>';
     					}
+
 
 			echo '</tr> 
 		</table>';
@@ -640,6 +848,7 @@
 			<form method="post" action="">
 			<input type="submit" value="DownloadCSV" name="download" id="download" />
 			<input type="submit" value="GeneratePDF" name="generate" id="generate" />
+			<input type="submit" value="Prebaci u bazu" name="baza" id="baza" />
 			</form>	';
 		}
 

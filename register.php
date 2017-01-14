@@ -3,6 +3,17 @@
 	$usern = "";
 	$email = "";
 
+	$dbname = "wt";
+	$servername = "localhost";
+	$username = "admin";
+	$password = "admin";
+
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	if (!$conn) {
+    	die("Connection failed: " . mysqli_connect_error());
+	}
+
 	$errors = array();
 	if(isset($_POST['login'])){
 		$username = preg_replace('/[^A-Za-z]/' , '' , $_POST['username']);
@@ -17,16 +28,29 @@
 		else if(strlen($username) < 3){
 			$errors[] = 'Username must have a minimum of three letters!';
 		}
-		$fajlovi = glob('korisnici/*.xml');
-		foreach ($fajlovi as $fajl) {
-			$xml = new SimpleXMLElement($fajl , 0 , true);
-			if(basename($fajl) == $usern . '.xml'){
+		#$fajlovi = glob('korisnici/*.xml');
+		#foreach ($fajlovi as $fajl) {
+		#	$xml = new SimpleXMLElement($fajl , 0 , true);
+		#	if(basename($fajl) == $usern . '.xml'){
+		#		$errors[] = 'Username already exists!';	
+		#	}
+		#	if($xml -> email == $email){
+		#		$errors[] = 'Email already exists!';
+		#	}
+		#}
+
+		#Spirala 4
+		$rezultat = "select * from korisnik;";
+		$rezultat = $conn->query($rezultat);
+		foreach ($rezultat as $r) {
+			if($r['username'] == $usern){
 				$errors[] = 'Username already exists!';	
 			}
-			if($xml -> email == $email){
+			if($r['email'] == $email){
 				$errors[] = 'Email already exists!';
 			}
 		}
+
 		if($email == ''){
 			$errors[] = 'Email is empty!';
 		}
@@ -47,11 +71,20 @@
 		}
 		
 
+		#if(count($errors) == 0){
+		#	$xml = new SimpleXMLElement('<korisnik></korisnik>');
+		#	$xml -> addChild('password' , md5($password));
+		#	$xml -> addChild('email' , $email);
+		#	$xml -> asXML('korisnici/' . $usern . '.xml');
+		#	header('Location: login.php');
+		#	die;
+		#}
+
+		#Spirala 4
 		if(count($errors) == 0){
-			$xml = new SimpleXMLElement('<korisnik></korisnik>');
-			$xml -> addChild('password' , md5($password));
-			$xml -> addChild('email' , $email);
-			$xml -> asXML('korisnici/' . $usern . '.xml');
+			$pass = md5($password);
+			$rezultat = "insert into korisnik (id , username , email , password) values (null , '$usern' , '$email' , '$pass');";
+			$rezultat = $conn->query($rezultat);
 			header('Location: login.php');
 			die;
 		}
