@@ -8,7 +8,7 @@
 
 	//$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-	$conn = mysqli_connect("mysql:dbname=baza;host=mysql-55-centos7", "semin", "12345");
+	$conn = mysqli_connect("mysql:dbname=db;host=mysql-55-centos7", "semin", "12345");
 
 	if (!$conn) {
     	die("Connection failed: " . mysqli_connect_error());
