@@ -3,12 +3,14 @@
 	$usern = "";
 	$email = "";
 
-	$dbname = "wt";
+	/*$dbname = "wt";
 	$servername = "localhost";
 	$username = "admin";
 	$password = "admin";
 
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	$conn = mysqli_connect($servername, $username, $password, $dbname);*/
+
+	$conn = new PDO('mysql:host=' . getenv('MYSQL_SERVICE_HOST') . ';port=3306;dbname=baza', 'semin', '12345');
 
 	if (!$conn) {
     	die("Connection failed: " . mysqli_connect_error());

@@ -14,7 +14,7 @@
 
 	$conn = mysqli_connect($servername, $username, $password, $dbname);*/
 
-	$conn = new PDO('mysql:host=' . getenv('MYSQL_SERVICE_HOST') . ';port=3306;dbname=sampledb', 'user6YP', 'e2fTWFNufhxsejUg');
+	$conn = new PDO('mysql:host=' . getenv('MYSQL_SERVICE_HOST') . ';port=3306;dbname=baza', 'semin', '12345');
 
 	if (!$conn) {
     	die("Connection failed: " . mysqli_connect_error());
